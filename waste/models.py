@@ -22,7 +22,7 @@ class City(models.Model):
 class People(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     name = models.CharField(max_length = 50)
-    pic = models.ImageField()
+    pic = models.ImageField(null=True,blank=True)
     city = models.ForeignKey(City,on_delete=models.CASCADE)
     def __str__(self):
         return self.name
@@ -30,8 +30,8 @@ class People(models.Model):
 class Worker(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     name = models.CharField(max_length = 50)
-    pic = models.ImageField()
-    city = models.ForeignKey(City,on_delete=models.CASCADE)
+    pic = models.ImageField(null=True,blank=True)
+    city = models.ForeignKey(City,on_delete=models.CASCADE,null=True,blank=True)
     def __str__(self):
         return self.name
 
@@ -40,7 +40,7 @@ class Bin(models.Model):
     green_waste = models.IntegerField()
     blue_waste = models.IntegerField()
     time = models.DateTimeField(null=True,blank=True)
-    worker=models.ForeignKey(Worker, on_delete=models.CASCADE)
+    worker=models.ForeignKey(Worker, on_delete=models.CASCADE,default=False,null=True,blank=True)
     garbage_is_collected=models.BooleanField(default=False)#True if garbage is collected, False if garbage is yet to be collected
     def garbage_collected(self):#When worker collects the garbage
         self.garbage_is_collected=True
@@ -52,7 +52,7 @@ class Bin(models.Model):
         total_garbage_collected=(self.green_waste+self.blue_waste)
         return total_garbage_collected
     def __str__(self):
-        return self.citizen
+        return self.citizen.name
     def send(self):
         self.time = timezone.now()
         self.save()
