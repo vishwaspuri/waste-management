@@ -5,4 +5,4 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    pass
+    render(request, "waste/index.html")
