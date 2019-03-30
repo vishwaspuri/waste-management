@@ -1,0 +1,14 @@
+{% extends "waste/base.html" %}
+{% block content %}
+	<div class="container">
+	{% if forms.errors %}
+		<p>You have entered invalid inputs</p>
+	{% else %}
+		<form method="POST" class="post-form">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="save btn btn-primary">Create Bin</button>
+		</form>
+	{% endif %}
+	</div>
+{% endblock %}
