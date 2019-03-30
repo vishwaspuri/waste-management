@@ -13,7 +13,7 @@ class State(models.Model):
     def __str__(self):
         return self.state_name
 
-class City(models.Model, Bin):
+class City(models.Model):
     city_name = models.CharField(max_length=30)
     state_name = models.ForeignKey(State, on_delete = models.CASCADE)
     def __str__(self):
@@ -40,6 +40,7 @@ class Bin(models.Model):
     green_waste = models.IntegerField()
     blue_waste = models.IntegerField()
     time = models.DateTimeField(null=True,blank=True)
+    worker=models.ForeignKey(Worker, on_delete=models.CASCADE)
     garbage_is_collected=models.BooleanField(default=False)#True if garbage is collected, False if garbage is yet to be collected
     def garbage_collected(self):#When worker collects the garbage
         self.garbage_is_collected=True

@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	{% for bin in bins %}
+		<div class="post">
+			<div class="date">{{ bin.time }}</div>
+			<br>
+			<h1><a href="{% url 'waste/bin_detail.html' %}">Details</a></h1>
+		</div>
+	{% endfor %}	
+{% endblock %}

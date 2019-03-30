@@ -10,9 +10,6 @@ class CleanGarbageForm(forms.ModelForm):#filled by people
             'Citizen':forms.TextInput(attrs={'class':'textinputclass'})
         }
 
-class CompletionForm(forms.ModelForm):#filled by worker
-	class meta():
-		model=Bin,Worker
-		fields = ('')
+		
 
 

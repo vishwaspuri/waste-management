@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Waste Management</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/waste.css' %}">
+	<link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="page-header">
+    	{% if user.is_authenticated %}
+    		<a href="" class="top-menu"><h1>New Bin</h1></a>
+            <a href="" class="top-menu"><h1>My Bins</h1></a>
+            <p class="top-menu">{{ user.username }}<small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+        {% else %}
+            <a href="" class="top-menu"><h1>Login</h1></a>   
+        {% endif %}
+    	<h1><a href="/">Waste Manager</a></h1>
+	</div>
+	<div class="content-container">
+		<div class="row">
+			<div class="col-md-8">
+				{% block content %}
+				{% endblock %}
+			</div>	
+		</div>
+	</div>	
+</body>
+</html>
