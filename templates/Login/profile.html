@@ -1,1 +1,12 @@
-{{ user.username }}
+{% extends 'Login/base.html' %}
+{% block content %}
+{% if not user.name %}
+<h3>Login as:</h3>
+<a href="{% url 'Workerform' %}"><h4>Worker</h4></a>
+<a href="{% url 'Peopleform' %}"><h4>Citizen</h4></a>
+{% else %}
+<a href="{% url 'index' %}"><h4>Worker</h4></a>
+<a href="{% url 'index' %}"><h4>Citizen</h4></a>
+{% endif %}
+<h4>Username: {{ user.username }} </h4>
+{% endblock %}
