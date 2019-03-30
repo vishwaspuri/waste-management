@@ -1,3 +1,8 @@
+{% extends 'waste/base.html' %}
+{% block content %}
+<div class="container">
 {% for b in bin %}
-<a href="{% url 'worker_bin_detail' pk=b.pk %}">{{ b.time }}</a> }
+<h1><a href="{% url 'worker_bin_detail' pk=b.pk %}">{{ b.time }}</a></h1> 
 {% endfor %}
+</div>
+{% endblock %}

@@ -1,1 +1,13 @@
-{{ bin.worker.name }}
+{% extends 'waste/base.html' %}
+{% block content %}
+<div class="container">
+<br>
+<div class="date">{{ bin.time }}</div>
+{% if bin.garbage_is_collected %}
+	<h1>Garbage has been collected</h1>
+{% else %}
+	<h1>Click here if garbage has been <a href="{% url 'garbage_is_collected' pk=bin.pk %}">collected.</a></h1>
+{% endif %}
+<br>
+</div>	
+{% endblock %}

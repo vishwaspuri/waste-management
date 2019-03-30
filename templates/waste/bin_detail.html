@@ -4,15 +4,17 @@
 <div class="container">
 <div class="post container">
 	<div class="date">{{ bin.time }}</div>
-	{% if bin.garbage_is_collected %}
-		<h1>Your garbage has been collected by </h1>
+	<h1>Green Waste = {{ bin.green_waste }}</h1>
+	<h1>Blue Waste = {{ bin.blue_waste }}</h1>
+ 	{% if bin.garbage_is_collected %}
+		<h1>Your garbage has been collected by {{ bin.worker.name }}</h1>
 	{% else %}
 		<h1>Your garbage will be collected soon</h1>
 	{% endif %}	
 	</div>
 
 <div class="link">
-	<h3><a href="{% url 'index' %}">Return to Bin List</a></h3>
+	<h3><a href="{% url 'citizen_bin_list' %}">Return to Bin List</a></h3>
 </div>
 </div>
 {% endblock %}

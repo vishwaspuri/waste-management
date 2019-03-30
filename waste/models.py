@@ -44,10 +44,8 @@ class Bin(models.Model):
     garbage_is_collected=models.BooleanField(default=False)#True if garbage is collected, False if garbage is yet to be collected
     def garbage_collected(self):#When worker collects the garbage
         self.garbage_is_collected=True
-        return garbage_is_collected
     def garbage_to_be_collected(self):#When citizen wants worker to collect garbage
-        self.garbage_is_collected=False
-        return garbage_is_collected
+        garbage_is_collected=False
     def total_garbage(self):#total garbage collected
         total_garbage_collected=(self.green_waste+self.blue_waste)
         return total_garbage_collected

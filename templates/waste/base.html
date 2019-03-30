@@ -14,7 +14,7 @@
             <a href="{% url 'citizen_bin_list' %}" class="top-menu"><h1>My Bins</h1></a>
             <p class="top-menu">{{ user.username }}<small>(<a href="{% url 'account_logout' %}">Log out</a>)</small></p>
         {% else %}
-            <a href="{% url 'account_login' %}" class="top-menu"><h1>Login</h1></a>   
+            <h1><a href="{% url 'account_login' %}" class="top-menu"><h1>Login</h1></a></h1>   
         {% endif %}
     	<h1><a href="/">Waste Manager</a></h1>
 	</div>

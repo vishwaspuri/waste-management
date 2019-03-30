@@ -34,9 +34,14 @@ def new_bin(request):
 		form=forms.CleanGarbageForm(request.POST)
 		if form.is_valid():
 			bin=form.save(commit=False)
-			bin.author=request.user	
-			bin.save()
-			return redirect('citizen_bin_list')	
+			bin.author=request.user
+			return render(request,'waste/citizen_bin_list.html')	
 	else:
 		form=forms.CleanGarbageForm()
 	return render(request,'waste/new_bin.html', {'form':form})
+
+def garbage_is_collected(request,pk):
+	bin=get_object_or_404(Bin,pk=pk)
+	bin.garbage_collected()
+	bin.save()
+	return redirect('worker_bin_list')	
