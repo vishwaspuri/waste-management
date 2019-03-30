@@ -1,0 +1,3 @@
+{% for b in bin %}
+<a href="{% url 'worker_bin_detail' pk=b.pk %}">{{ b.time }}</a> }
+{% endfor %}
