@@ -50,4 +50,8 @@ h1, h2, h3, h4 {
 .post{
     border:2px solid black;
     padding: 5px;
+    background: white;
+}
+body{
+    background-image:url("https://www.edson.ca/public/uploads/images/garbage2/1518128408-695w_garbage2.jpg"); 
 }

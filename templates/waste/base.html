@@ -9,10 +9,13 @@
 </head>
 <body>
 	<div class="page-header">
-    	{% if user.is_authenticated %}
+    	{% if user.is_authenticated and user.people_set.count %}
     		<a href="{% url 'new_bin' %}" class="top-menu"><h1>New Bin</h1></a>
             <a href="{% url 'citizen_bin_list' %}" class="top-menu"><h1>My Bins</h1></a>
             <p class="top-menu">{{ user.username }}<small>(<a href="{% url 'account_logout' %}">Log out</a>)</small></p>
+        {% elif user.is_authenticated and user.worker_set.count %}
+            <a href="{% url 'worker_bin_list' %}" class="top-menu"><h1>My Bins</h1></a>
+            <p class="top-menu">{{ user.username }}<small>(<a href="{% url 'account_logout' %}">Log out</a>)</small></p>    
         {% else %}
             <h1><a href="{% url 'account_login' %}" class="top-menu"><h1>Login</h1></a></h1>   
         {% endif %}
